@@ -1,6 +1,6 @@
 <div class="main">
   <div class="wrapper">
-    <ng-container *ngFor="let pair of pairs$ | async">
+    <ng-container *ngFor="let pair of pairs$ | async; trackBy:trackById">
       <sv-number-card
         [numberCard]="pair"
         (openCard)="onOpenCard($event)"
