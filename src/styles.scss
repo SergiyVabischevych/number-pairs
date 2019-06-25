@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+@import './assets/variables';
+
+body {
+  background-color: $sv-black;
+}
+
+.main {
+  position: absolute;
+  top: 25%;
+  left: 40%;
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+  width: 330px;
+}

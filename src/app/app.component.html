@@ -1,5 +1,10 @@
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
+<div class="main">
+  <div class="wrapper">
+    <ng-container *ngFor="let pair of pairs$ | async">
+      <sv-number-card
+        [numberCard]="pair"
+        (openCard)="onOpenCard($event)"
+      ></sv-number-card>
+    </ng-container>
+  </div>
 </div>
