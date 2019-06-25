@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "number-pairs"
+    }
+  },
+  "defaultProject": "number-pairs",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
