@@ -17,10 +17,10 @@ export class NumberCardComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.numberCard) {
-      if (this.numberCard.status === CardStatus.Close){
+      if (this.numberCard.status === CardStatus.Close) {
         this.displayedValue = this.numberCard.casing;
       }
-      if (this.numberCard.status !== CardStatus.Close){
+      if (this.numberCard.status !== CardStatus.Close) {
         this.displayedValue = this.numberCard.value.toString();
       }
     }

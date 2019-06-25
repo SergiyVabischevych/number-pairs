@@ -21,6 +21,10 @@ export class AppComponent {
     store.dispatch(new fromAppActions.InitNumberPairsAction());
   }
 
+  trackById(index: number, item: NumberCardModel): number {
+    return item.id;
+  }
+
   onOpenCard(cardId: number): void {
     this.store.dispatch(new fromAppActions.SetShowedCardAction({ cardId }));
   }

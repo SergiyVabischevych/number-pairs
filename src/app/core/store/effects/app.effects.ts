@@ -63,8 +63,8 @@ export class AppEffects {
   changeCardStatus$: Observable<Action> = this.actions$
     .pipe(
       ofType<fromAppActions.CompareNumberPairsAction>(fromAppActions.AppActionTypes.CompareShowedCards),
-      tap(action => console.log(action)),
-      map(action => new fromAppActions.SetNumberPairsAction({ pairs: action.payload.pairs }))
+      map(action => action.payload.pairs),
+      map((pairs: Array<NumberCardModel>) => new fromAppActions.SetNumberPairsAction({ pairs })),
     );
 
   @Effect()
