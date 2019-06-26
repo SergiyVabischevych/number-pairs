@@ -15,7 +15,7 @@ export class NumberCardComponent implements OnChanges {
 
   @Output() openCard: EventEmitter<number> = new EventEmitter<number>();
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     if (changes.numberCard) {
       if (this.numberCard.status === CardStatus.Close) {
         this.displayedValue = this.numberCard.casing;

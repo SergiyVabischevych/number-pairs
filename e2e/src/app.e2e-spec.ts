@@ -1,16 +1,22 @@
 import { AppPage } from './app.po';
-import { browser, logging } from 'protractor';
+import { browser, logging, ElementFinder } from 'protractor';
 
-describe('workspace-project App', () => {
+describe('number-pairs-project App', () => {
   let page: AppPage;
 
   beforeEach(() => {
     page = new AppPage();
+    page.navigateTo();
   });
 
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getTitleText()).toEqual('Welcome to number-pairs!');
+  it('should display 36 cells', () => {
+    expect(page.getNumberCards().count()).toBe(36);
+  });
+
+  it('should display 36 values "#"', () => {
+    page.getNumberCards().each((element: ElementFinder) => {
+      expect(element.getText()).toEqual('#');
+    });
   });
 
   afterEach(async () => {
