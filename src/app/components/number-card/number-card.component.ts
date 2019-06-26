@@ -29,4 +29,12 @@ export class NumberCardComponent implements OnChanges {
   onOpenCard(): void {
     this.openCard.emit(this.numberCard.id);
   }
+
+  isCardStatusShow(): boolean {
+    return this.numberCard.status === CardStatus.Show;
+  }
+
+  isCardStatusOpen(): boolean {
+    return this.numberCard.status === CardStatus.Open;
+  }
 }
