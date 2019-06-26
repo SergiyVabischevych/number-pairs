@@ -1,4 +1,6 @@
 <div
+  [class.open]="isCardStatusOpen()"
+  [class.show]="isCardStatusShow()"
   (click)="onOpenCard()"
   class="number-card"
 >
