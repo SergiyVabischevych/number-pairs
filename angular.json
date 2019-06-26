@@ -121,8 +121,5 @@
       }
     }
   },
-  "defaultProject": "number-pairs",
-  "cli": {
-    "defaultCollection": "@ngrx/schematics"
-  }
+  "defaultProject": "number-pairs"
 }
