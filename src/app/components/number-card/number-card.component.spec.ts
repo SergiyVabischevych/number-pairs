@@ -5,14 +5,23 @@ import { CardStatus, NumberCardModel } from '@app/models';
 import { Component } from '@angular/core';
 
 @Component({
-  template: '<sv-number-card [numberCard]="numberCard"></sv-number-card>'
+  template: `<sv-number-card
+              [numberCard]="numberCard"
+              (openCard)=onOpenCard($event)
+            ></sv-number-card>`
 })
 class NumberCardParentComponent {
+  openCardId: number;
   numberCard: NumberCardModel;
+
+  onOpenCard(id: number): void {
+    this.openCardId = id;
+  }
 }
 
 describe('NumberCardComponent', () => {
-  let component: NumberCardParentComponent;
+  let hostComponent: NumberCardParentComponent;
+  let numberCardEl: HTMLElement;
   let fixture: ComponentFixture<NumberCardParentComponent>;
   const numberCard: NumberCardModel = {
     id: 1,
@@ -33,38 +42,42 @@ describe('NumberCardComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(NumberCardParentComponent);
-    component = fixture.componentInstance;
-    component.numberCard = { ...numberCard };
+    numberCardEl = fixture.debugElement.nativeElement.querySelector('.number-card');
+    hostComponent = fixture.componentInstance;
+    hostComponent.numberCard = { ...numberCard };
     fixture.detectChanges();
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(hostComponent).toBeTruthy();
   });
 
   it('should show #', () => {
-    expect(fixture.nativeElement.textContent).toContain('#');
+    expect(numberCardEl.textContent.trim()).toBe('#');
   });
 
   it('should show 35', () => {
-    component.numberCard = { ...numberCard, status: CardStatus.Show };
+    hostComponent.numberCard = { ...numberCard, status: CardStatus.Show };
     fixture.detectChanges();
-    expect(fixture.nativeElement.textContent).toContain('35');
+    expect(numberCardEl.textContent.trim()).toBe('35');
   });
 
   it('should has background-color "rgb(230, 81, 0)"', () => {
-    component.numberCard = { ...numberCard, status: CardStatus.Show };
+    hostComponent.numberCard = { ...numberCard, status: CardStatus.Show };
     fixture.detectChanges();
-    const cellElement: HTMLElement = fixture.nativeElement.querySelector('div.show');
-    expect(fixture.nativeElement.textContent).toContain('35');
-    expect(window.getComputedStyle(cellElement, null).getPropertyValue('background-color')).toBe('rgb(230, 81, 0)');
+    expect(numberCardEl.textContent.trim()).toBe('35');
+    expect(window.getComputedStyle(numberCardEl, null).getPropertyValue('background-color')).toBe('rgb(230, 81, 0)');
   });
 
   it('should has background-color "#0099FF"', () => {
-    component.numberCard = { ...numberCard, status: CardStatus.Open };
+    hostComponent.numberCard = { ...numberCard, status: CardStatus.Open };
     fixture.detectChanges();
-    const cellElement: HTMLElement = fixture.nativeElement.querySelector('div.open');
-    expect(fixture.nativeElement.textContent).toContain('35');
-    expect(window.getComputedStyle(cellElement, null).getPropertyValue('background-color')).toBe('rgb(0, 153, 255)');
+    expect(numberCardEl.textContent.trim()).toBe('35');
+    expect(window.getComputedStyle(numberCardEl, null).getPropertyValue('background-color')).toBe('rgb(0, 153, 255)');
+  });
+
+  it('should raise selected event when clicked', () => {
+    numberCardEl.click();
+    expect(hostComponent.openCardId).toBe(numberCard.id);
   });
 });

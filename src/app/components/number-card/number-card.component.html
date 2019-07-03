@@ -1,6 +1,7 @@
 <div
   [class.open]="isCardStatusOpen()"
   [class.show]="isCardStatusShow()"
+  [attr.data-displayed-value]="displayedValue"
   (click)="onOpenCard()"
   class="number-card"
 >

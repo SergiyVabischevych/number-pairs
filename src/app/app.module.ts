@@ -17,7 +17,7 @@ import { NumberCardComponent } from './components';
   imports: [
     BrowserModule,
     CommonModule,
-    StoreModule.forRoot(appReducers),
+    StoreModule.forRoot({...appReducers }),
     EffectsModule.forRoot([ AppEffects ]),
   ],
   providers: [],
