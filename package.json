@@ -7,7 +7,8 @@
     "build": "ng build --aot",
     "test": "ng test --no-watch --code-coverage --browsers=ChromeHeadless",
     "lint": "ng lint",
-    "e2e": "ng e2e --port=4208"
+    "e2e": "ng e2e --port=4208",
+    "prerender": "./node_modules/.bin/ts-node ./prerender.ts"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +24,8 @@
     "@ngrx/core": "^1.2.0",
     "@ngrx/effects": "^8.0.1",
     "@ngrx/store": "^8.0.1",
+    "@nguniversal/module-map-ngfactory-loader": "^8.1.1",
+    "express": "^4.17.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
@@ -32,9 +35,9 @@
     "@angular/cli": "~8.0.3",
     "@angular/compiler-cli": "~8.0.3",
     "@angular/language-service": "~8.0.3",
-    "@types/node": "~8.9.4",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
@@ -44,8 +47,10 @@
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
     "protractor": "~5.4.0",
+    "ts-loader": "^6.0.4",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
-    "typescript": "~3.4.3"
+    "typescript": "~3.4.3",
+    "webpack-cli": "^3.3.5"
   }
 }
