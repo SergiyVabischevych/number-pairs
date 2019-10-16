@@ -16,10 +16,7 @@ export class AppComponent {
 
   constructor(
     private readonly store: Store<fromReducers.State>,
-  ) {
-    // here dispatch action for init number pairs
-    store.dispatch(new fromAppActions.InitNumberPairsAction());
-  }
+  ) { }
 
   trackById(index: number, item: NumberCardModel): number {
     return item.id;

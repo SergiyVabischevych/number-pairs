@@ -15,13 +15,12 @@ import { NumberCardComponent } from './components';
     NumberCardComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     CommonModule,
-    StoreModule.forRoot(appReducers),
+    StoreModule.forRoot({...appReducers }),
     EffectsModule.forRoot([ AppEffects ]),
   ],
   providers: [],
   bootstrap: [ AppComponent ],
-  exports: [NumberCardComponent]
 })
 export class AppModule { }

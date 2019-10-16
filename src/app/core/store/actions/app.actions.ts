@@ -2,16 +2,9 @@ import { Action } from '@ngrx/store';
 import { NumberCardModel } from '@app/models';
 
 export enum AppActionTypes {
-  InitNumberPairs = '[App Root] Init Number Pairs',
   SetNumberPairs = '[App Root] Set Number Pairs',
   SetShowedCard = '[App Root] Set Showed Card',
   CompareShowedCards = '[App Root] Compare Showed Card',
-}
-
-export class InitNumberPairsAction implements Action {
-
-  readonly type = AppActionTypes.InitNumberPairs;
-
 }
 
 export class SetNumberPairsAction implements Action {
@@ -41,5 +34,4 @@ export class SetShowedCardAction implements Action {
 export type AppActions =
     | SetNumberPairsAction
     | SetShowedCardAction
-    | CompareNumberPairsAction
-    | InitNumberPairsAction;
+    | CompareNumberPairsAction;
